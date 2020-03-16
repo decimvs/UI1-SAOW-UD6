@@ -1,0 +1,58 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Trabajo Colaborativo UD4</a>
+  <ul class="navbar-nav px-3">
+    <li class="nav-item text-nowrap">
+        <div class="container" *ngIf="isAuthenticated()">
+          <span class="mx-2 text-light">Hola {{username}} -</span>
+          <a class="nav-link text-light" routerLink="logout">Cerrar sesión</a>
+        </div>
+    </li>
+  </ul>
+</nav>
+
+<div class="container_fluid">
+  <div class="row">
+    <nav class="col-md-2 d-none d-md-block bg-light">
+      <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">
+              <span data-feather="home"></span>
+              Dashboard
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/autores" routerLinkActive="active">
+              <span data-feather="feather"></span>
+              Autores
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/publicaciones" routerLinkActive="active">
+              <span data-feather="book"></span>
+              Publicaciones
+            </a>
+          </li>
+          <li class="nav-item"   ng-if="isLogged" >
+            <a class="nav-link" routerLink="/usuarios" routerLinkActive="active">
+              <span data-feather="user"></span>
+              Usuarios
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>
+
+<footer class="bg-dark mt-auto py-3">
+  <div class="container">
+    <span class="text-muted text-center">Trabajo colaborativo UD4 SAOW - Autores: José Miguel González y Guillermo Espert - 2020</span>
+  </div>
+</footer>
+

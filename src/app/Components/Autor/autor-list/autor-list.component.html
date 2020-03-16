@@ -1,0 +1,27 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Autores</h1>
+</div>
+
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">NOMBRE</th>
+    <th scope="col">APELLIDOS</th>
+    <th scope="col">ACCIONES</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let autor of autores">
+    <th scope="row">{{autor.id}}</th>
+    <td>{{autor.nombre}}</td>
+    <td>{{autor.apellidos}}</td>
+    <td><a routerLink="/autores/editar/{{autor.id}}">Editar</a> | 
+      <a routerLink="/autores/borrar/{{autor.id}}">Eliminar</a>
+      </td>
+  </tr>
+  </tbody>
+</table>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-top">
+  <a class="btn btn-primary" routerLink="/autores/agregar">Añadir nuevo autor</a>
+</div>

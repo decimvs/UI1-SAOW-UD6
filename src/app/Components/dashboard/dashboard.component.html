@@ -1,0 +1,27 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Dashboard</h1>
+</div>
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Nombre Completo</th>
+    <th scope="col">Artículos</th>
+    <th scope="col">Congresos</th>
+    <th scope="col">Libros</th>
+    <th scope="col">Capítulos</th>
+    <th scope="col">Reportes</th>
+  </tr>
+  </thead>
+  <tbody *ngIf="datosCargados | async">
+  <tr *ngFor="let autor of autoresDash; let i = index">
+    <td>{{i + 1}}</td>
+    <td>{{autor.autor.nombre}} {{autor.autor.apellido}}</td>
+    <td>{{autor.articulos}}</td>
+    <td>{{autor.comunicaciones}}</td>
+    <td>{{autor.libros}}</td>
+    <td>{{autor.capitulos}}</td>
+    <td>{{autor.reportes}}</td>
+  </tr>
+  </tbody>
+</table>
