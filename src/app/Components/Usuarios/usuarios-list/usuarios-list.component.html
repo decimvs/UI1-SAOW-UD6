@@ -1,0 +1,34 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Usuarios</h1>
+</div>
+
+<table class="table"  ng-if="isLogged ">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">NOMBRE</th>
+    <th scope="col">APELLIDOS</th>
+    <th scope="col">EMAIL</th>
+    <th scope="col">ACCIONES</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th scope="row">1</th>
+    <td>Joaquín</td>
+    <td>Ruiz Gómez</td>
+    <td>joaquinruiz@gmail.com</td>
+    <td ><a ng-if="tipo==2 || tipo==1" routerLink="/Usuarios/editar/1">Editar</a> | <a ng-if="tipo==2  " routerLink="/Usuarios/editar/1">Eliminar</a></td>
+  </tr>
+  <tr>
+    <th scope="row">2</th>
+    <td>Alberto</td>
+    <td>Reyes Roma</td>
+    <td>albertoreyes@gmail.com</td>
+   
+  </tr>
+  </tbody>
+</table>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-top">
+  <a class="btn btn-primary" routerLink="/usuarios/usuarios-agregar">Añadir nuevo usuario</a>
+</div>

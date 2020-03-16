@@ -1,0 +1,22 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Autor - Modificar un autor</h1>
+</div>
+<form [formGroup]="editarAutor">
+  <div class="form-group">
+    <label for="nombre">Nombre</label>
+    <input type="text" class="form-control" id="nombre" name="nombre" value="{{nombreT}}">
+  </div>
+  <div class="form-group">
+    <label for="apellidos">Apellidos</label>
+    <input type="text" class="form-control" id="apellidos" name="apellidos" value="{{apellidosT}}">
+  </div>
+
+  <div class="btn-toolbar mb-3" role="toolbar">
+    <div class="btn-group mr-3" role="group">
+      <a class="btn btn-secondary" routerLink="/autores">Cancelar</a>
+    </div>
+    <div class="btn-group" role="group">
+      <button type="submit" class="btn btn-primary">Modificar</button>
+    </div>
+  </div>
+</form>

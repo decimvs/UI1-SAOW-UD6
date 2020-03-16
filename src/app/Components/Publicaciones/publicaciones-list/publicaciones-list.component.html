@@ -1,0 +1,59 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Publicaciones</h1>
+</div>
+
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">TIPO</th>
+    <th scope="col">AUTORES</th>
+    <th scope="col">TITULO</th>
+    <th scope="col">AÑO</th>
+    <th scope="col">ACCIONES</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let publicacion of publicaciones; let i = index">
+    <th scope="row">{{i + 1}}</th>
+    <td>{{publicacion.tipo | titlecase}}</td>
+    <td>
+      <span *ngFor="let autor of publicacion.autores" class="badge badge-secondary mx-1">{{buscarAutor(autor)}}</span>
+    </td>
+    <td>{{publicacion.titulo}}</td>
+    <td>{{publicacion.anyo}}</td>
+    <td><a class="btn btn-primary btn-sm mr-1" routerLink="/publicaciones/publicaciones-agregar/{{publicacion.id}}">Editar</a>
+      <button type="button" class="btn btn-primary btn-sm" (click)="abrirModal(publicacion.id)">Eliminar</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-top">
+  <a class="btn btn-primary" routerLink="/publicaciones/publicaciones-agregar">Añadir nueva publicacion</a>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="eliminarModal" #modal tabindex="1" role="dialog" aria-labelledby="eliminarModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="eliminarModalLabel">Eliminar</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ¿Está seguro que quiere eliminar la publicación con los siguientes datos:?
+        <ul>
+          <li><b>Título:</b> {{publicacionSeleccionada.titulo}}</li>
+          <li><b>Tipo:</b> {{publicacionSeleccionada.tipo | titlecase}}</li>
+          <li><b>Año:</b> {{publicacionSeleccionada.anyo}}</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-primary" (click)="eliminarPublicacion(publicacionSeleccionada.id)">Sí</button>
+      </div>
+    </div>
+  </div>
+</div>

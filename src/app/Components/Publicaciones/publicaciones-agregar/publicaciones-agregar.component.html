@@ -1,0 +1,91 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Publicaciones - <span *ngIf="action === 'add'">Añadir nueva publicacion</span><span *ngIf="action === 'edit'">Editar publicación</span> </h1>
+</div>
+<form [formGroup]="addPublicacion" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="tipo">Tipo</label><br>
+    <select (change)="SelectedPublicationType($event)" formControlName="tipo" class="form-control" id="tipo">
+      <option *ngFor="let t of tiposPublicacion" [value]="t.tipoId">{{t.tipoNombre}}</option>
+    </select>
+  </div>
+  <div *ngIf="mAutores" class="form-group">
+    <label for="autores">Autores</label><br>
+    <select class="form-control" id="autores" formControlName="autores" [ngClass]="{ 'is-invalid': submitted && f.autores.errors }" multiple>
+      <option *ngFor="let autor of autores" [value]="autor.id">{{autor.nombre}} {{autor.apellido}}</option>
+    </select>
+    <div *ngIf="submitted && f.autores.errors">
+      <div>Se requiere al menos un autor.</div>
+    </div>
+  </div>
+  <div *ngIf="mTitulo" class="form-group">
+    <label for="titulo">Título</label>
+    <input class="form-control" id="titulo" formControlName="titulo" [ngClass]="{ 'is-invalid': submitted && f.titulo.errors }" placeholder="Título" type="text">
+    <div *ngIf="submitted && f.titulo.errors">
+      <div>Se debe proporcionar un título para la publicación.</div>
+    </div>
+  </div>
+  <div *ngIf="mRevista" class="form-group">
+    <label for="revista">Revista</label>
+    <input class="form-control" id="revista" formControlName="revista" [ngClass]="{ 'is-invalid': submitted && f.revista.errors }" placeholder="Revista" type="text">
+    <div *ngIf="submitted && f.revista.errors">
+      <div>Se debe proporcionar un nombre de revista para la publicación.</div>
+    </div>
+  </div>
+  <div *ngIf="mIssn" class="form-group">
+    <label for="issn">ISSN</label>
+    <input class="form-control" id="issn" formControlName="issn" [ngClass]="{ 'is-invalid': submitted && f.issn.errors }" placeholder="ISSN" type="text">
+    <div *ngIf="submitted && f.issn.errors">
+      <div>Se debe proporcionar un número de ISSN para la publicación.</div>
+    </div>
+  </div>
+  <div *ngIf="mAnyo" class="form-group">
+    <label for="anyo">Año</label>
+    <input class="form-control" id="anyo" formControlName="anyo" [ngClass]="{ 'is-invalid': submitted && f.anyo.errors }" placeholder="Año" type="text">
+    <div *ngIf="submitted && f.anyo.errors">
+      <div>Se debe proporcionar un año de publicación con una longitud mínima de 4 caracteres.</div>
+    </div>
+  </div>
+  <div *ngIf="mCongreso" class="form-group">
+    <label for="congreso">Congreso</label>
+    <input class="form-control" id="congreso" formControlName="congreso" [ngClass]="{ 'is-invalid': submitted && f.congreso.errors }" placeholder="Congreso" type="text">
+    <div *ngIf="submitted && f.congreso.errors">
+      <div>Se debe proporcionar un congreso para la publicación.</div>
+    </div>
+  </div>
+  <div *ngIf="mLugar" class="form-group">
+    <label for="lugar">Lugar</label>
+    <input class="form-control" id="Lugar" formControlName="lugar" [ngClass]="{ 'is-invalid': submitted && f.lugar.errors }" placeholder="Lugar" type="text">
+    <div *ngIf="submitted && f.lugar.errors">
+      <div>Se debe proporcionar un lugar para la publicación.</div>
+    </div>
+  </div>
+  <div *ngIf="mEditorial" class="form-group">
+    <label for="editorial">Editorial</label>
+    <input class="form-control" id="editorial" formControlName="editorial" [ngClass]="{ 'is-invalid': submitted && f.editorial.errors }" placeholder="Editorial" type="text">
+    <div *ngIf="submitted && f.editorial.errors">
+      <div>Se debe proporcionar una editorial para la publicación.</div>
+    </div>
+  </div>
+  <div *ngIf="mLibro" class="form-group">
+    <label for="libro">Libro</label>
+    <input class="form-control" id="libro" formControlName="libro" [ngClass]="{ 'is-invalid': submitted && f.libro.errors }" placeholder="Libro" type="text">
+    <div *ngIf="submitted && f.libro.errors">
+      <div>Se debe proporcionar el nombre de un libro para la publicación.</div>
+    </div>
+  </div>
+  <div *ngIf="mReferencia" class="form-group">
+    <label for="referencia">Referencia</label>
+    <input class="form-control" id="referencia" formControlName="referencia" [ngClass]="{ 'is-invalid': submitted && f.referencia.errors }" placeholder="Referencia" type="text">
+    <div *ngIf="submitted && f.referencia.errors">
+      <div>Se debe proporcionar una referencia para la publicación.</div>
+    </div>
+  </div>
+  <div class="btn-toolbar mb-3" role="toolbar">
+    <div class="btn-group mr-3" role="group">
+      <a class="btn btn-secondary" routerLink="/publicaciones">Cancelar</a>
+    </div>
+    <div class="btn-group" role="group">
+      <button class="btn btn-primary" type="submit"><span *ngIf="action === 'add'">Añadir</span><span *ngIf="action === 'edit'">Editar</span> </button>
+    </div>
+  </div>
+</form>
